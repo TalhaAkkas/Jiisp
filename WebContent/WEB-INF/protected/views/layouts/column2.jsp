@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+	pageEncoding="utf-8"%>
 
 <div class="span-19">
 	<div id="content">
 		<jsp:include page='<%=(String)request.getAttribute("content")%>' />
-	</div><!-- content -->
+	</div>
+	<!-- content -->
 </div>
 <div class="span-5 last">
 	<div id="sidebar">
-	<!-- <?php
+		<!-- <?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'Operations',
 		));
@@ -18,5 +19,6 @@
 		));
 		$this->endWidget();
 	?> -->
-	</div><!-- sidebar -->
+	</div>
+	<!-- sidebar -->
 </div>

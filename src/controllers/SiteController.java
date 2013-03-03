@@ -10,11 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import components.UserIdentity;
 
+import models.Post;
 import models.WebError;
 
 /**
  * Servlet implementation class Controller
  */
+@SuppressWarnings("serial")
 public class SiteController extends Controller {
 	@Override
 	protected String getContainer(){
@@ -38,6 +40,7 @@ public class SiteController extends Controller {
 		actionMap.put("contact", new ActionContact());
 		actionMap.put("login", new ActionLogin());
 		actionMap.put("logout", new ActionLogout());
+		actionMap.put("create", new ActionCreate());
 		return actionMap;
 	}
 	@Override
@@ -141,5 +144,31 @@ public class SiteController extends Controller {
 		}
 		
 	}
-	
+	class ActionCreate implements Action{
+
+		@Override
+		public boolean beforeAction(HttpServletRequest request, HttpServletResponse response) {
+			return new UserIdentity().isAuthenticate(request);
+		}
+
+		@Override
+		public void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
+			if(request.getParameter("create") != null){
+				Post p = new Post();
+				p.setHeader(request.getParameter("header"));
+				p.setText(request.getParameter("text"));
+				p.savePost();
+				
+				try {
+					response.sendRedirect(response.encodeRedirectURL(getBaseurl()));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			request.setAttribute("appname", "Jiisp");
+			request.setAttribute("title", "Hello app");
+			renderPage(request, response, "create.jsp");
+		}
+		
+	}
 }

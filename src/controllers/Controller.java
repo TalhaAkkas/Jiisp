@@ -14,6 +14,7 @@ import models.WebError;
 /**
  * Servlet implementation class Controller
  */
+@SuppressWarnings("serial")
 public abstract class Controller extends HttpServlet {
 	protected static final String DEFAULT = "default";
 	private static final String INDEX = "/index.jsp";
