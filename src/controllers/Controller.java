@@ -66,14 +66,14 @@ public abstract class Controller extends HttpServlet {
 	    		if (actions.get(request.getParameter("action")).beforeAction(request, response))
 	    			actions.get(request.getParameter("action")).doAction(request, response);
 	    	}else{
-	    		doError(request, response, new WebError(404, "aradýðýnýz seyfaya ulaþýlamýyor lütfen daha sonra tekrar deneyin"));
+	    		doError(request, response, new WebError(404, "aradÄ±ÄŸÄ±nÄ±z sayfaya ulaÅŸÄ±lamÄ±yor lÃ¼tfen daha sonra tekrar deneyin"));
 	    	}
 	    }else{
 	    	if(actions.containsKey(DEFAULT)){
 	    		if (actions.get(DEFAULT).beforeAction(request, response))
 	    			actions.get("default").doAction(request, response);
 	    	}else{
-	    		doError(request, response, new WebError(404, "aradýðýnýz seyfaya ulaþýlamýyor lütfen daha sonra tekrar deneyin"));
+	    		doError(request, response, new WebError(404, "aradÄ±ÄŸÄ±nÄ±z sayfaya ulaÅŸÄ±lamÄ±yor lÃ¼tfen daha sonra tekrar deneyin"));
 	    	}
 	    }
 	}
